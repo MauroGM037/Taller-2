@@ -1,0 +1,8 @@
+[
+  {"name": "cl.ucn.disc.as.conserjeria.model.Contrato", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.conserjeria.model.Departamento", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.conserjeria.model.Edificio", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.conserjeria.model.Pago", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.conserjeria.model.Persona", "allDeclaredConstructors": true, "allDeclaredFields": true}
+]
+

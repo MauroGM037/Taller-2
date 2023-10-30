@@ -1,0 +1,89 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id('io.ebean') version '13.23.1'
+    id('com.github.ben-manes.versions') version '0.49.0'
+}
+
+group = 'cl.ucn.disc.as'
+version = '0.0.4'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+compileJava {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
+
+ext {
+    ebeanVersion = '13.23.1'
+    sqliteVersion = '3.43.2.1'
+    javalinVersion = '5.6.3'
+    //brotliVersion = '1.12.0'
+    lombokVersion = '1.18.30'
+    gsonVersion = '2.10.1'
+    logbackVersion = '1.4.11'
+    commonsLangVersion = '3.13.0'
+    javaFakerVersion = '1.0.2'
+}
+
+dependencies {
+    // junit
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // lombok
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // ebean
+    testImplementation "io.ebean:ebean-test:${ebeanVersion}"
+
+    // ebean
+    implementation "io.ebean:ebean:${ebeanVersion}"
+    implementation "io.ebean:ebean-ddl-generator:${ebeanVersion}"
+    annotationProcessor "io.ebean:querybean-generator:${ebeanVersion}"
+
+    // database
+    implementation "org.xerial:sqlite-jdbc:${sqliteVersion}"
+
+    // json
+    implementation "com.google.code.gson:gson:${gsonVersion}"
+
+    // web: javalin
+    implementation "io.javalin:javalin:${javalinVersion}"
+
+    // lombok
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // logger
+    implementation "ch.qos.logback:logback-core:${logbackVersion}"
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+    // commons-lang3
+    implementation "org.apache.commons:commons-lang3:${commonsLangVersion}"
+
+    // data faker
+    implementation "com.github.javafaker:javafaker:${javaFakerVersion}"
+
+}
+
+ebean {
+    debugLevel = 9 //0 - 9
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+}
